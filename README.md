@@ -10,7 +10,6 @@ Copyright: ECE 6780, Kyle G. Gayliyev,  - This work may not be copied for use in
 
 ## Overview of the Project
 
-test
 
 ### Part 1: 
 
