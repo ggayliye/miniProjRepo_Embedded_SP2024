@@ -1,9 +1,9 @@
 # Mini-Project: 
 
-Authors : Kyle G. Gayliyev, Hazen R. Brown  <br>
+Authors : Kyle G. Gayliyev, Hazen R. Brown, Prasanna Umbarkar <br>
 Date: x-April-2024<br>
 Course: ECE 6780 - Embedded System Design, ECE Department, The University of Utah<br>
-GitHub IDs: ggayliye, Hrb2003 <br>
+GitHub IDs: ggayliye, Hrb2003, prasannaumbarkar09 <br>
 Repo:  <br>
 Date: By x-April-2024, 11:59pm (Time of when submission is due/will be ready to be evaluated)<br>
 Copyright: ECE 6780, Kyle G. Gayliyev,  - This work may not be copied for use in Academic Coursework.
