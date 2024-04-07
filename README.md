@@ -4,7 +4,7 @@ Authors : Kyle G. Gayliyev, Hazen R. Brown, Prasanna Umbarkar, Mihir Rane <br>
 Date: 29- March - 2024<br>
 Course: ECE 6780 - Embedded System Design, ECE Department, The University of Utah<br>
 GitHub IDs: ggayliye, Hrb2003, prasannaumbarkar09, patientcoderMR7 <br>
-Repo:  <br> https://github.com/ggayliye/miniProjRepo_Embedded_SP2024
+Repo:  <br> https://github.com/ggayliye/miniProjRepo_Embedded_SP2024 <br>
 Date: By 26-April-2024, 11:59pm (Time of when submission is due/will be ready to be evaluated)<br>
 Copyright: ECE 6780, Kyle G. Gayliyev  - This work may not be copied for use in Academic Coursework.
 
@@ -35,16 +35,15 @@ Copyright: ECE 6780, Kyle G. Gayliyev  - This work may not be copied for use in 
 * Assemble the dispenser and integrate the water pump code with the sensor code.
 * Test and fine-tune the device for practical functionality.
 
-
 ## Risks Associated With The Project And Plans To Compensate:
 
 The use of water near electronics will require extra protection/care of the devices and connections. Additionally, the use of an ultrasonic sensor to measure the height of water may be difficult and could require extra work to ensure correct functionality. The most challenging part is expected to be implementing the water level sensor.
 
 
 <pre><ins>Future extensions</ins> : This mini-project is about a month-long project. Each week, we'll meet with a TA 
-to discuss the progress of the project and update the TA about the project's situation. As a group, we'll be 
-continuously working on this project updating it each week. It'll be finished at the end of the semester whether we 
-accomplish our goals or not in this project. </pre>
+to discuss the progress of the project and update the TA about the project's situation. As a group, 
+we'll be continuously working on this project updating it each week. It'll be finished at the end 
+of the semester whether we accomplish our goals or not in this project. </pre>
 
 # Partnership
 
@@ -54,24 +53,73 @@ This project is worked on as a requirement of the "ECE 6780 Embedded System Desi
 
 <ins>1st Week Notes:</ins> <br>
 
-- 
-- 
+By March 13th
+
+- The project proposal is submitted.
+- Feedback about our project proposal is received from the TA. It reads as following:<br>
+
+*"Good that you are considering safety. Think about how you can test the system without a tank and pump. <br><br>
+
+Float sensors are another possibility you can consider for measuring the height. <br>
+
+Be careful of relying on a "known" rate, such as the pump time. Variations can make the integration of the rate become increasingly wrong over time as the error accumulates. Use the expected rate to do initial conditions and then use sensor feedback to adjust. <br>
+
+You need to expand the detail of your milestones. You use verbs for activities, which is good. Some of your targets are less clear - be as detailed as possible about how you will demonstrate it working and what a successful implementation would be. What does "working" mean? How do you demo that? <br>
+
+Your first milestone falls into the "getting materials" anti-milestone. You cannot test something you don't have, and you need to make progress towards other goals. <br>
+
+Your risks are identified, but think about what you can do it the risk turns out to be true. If the water sensor is the challenge, do you have a fallback? What happens if you run over schedule? <br>
+
+Finally, make sure you don't fall in the trap of splitting the work up by person and then trying to bring everything together. This is a classic mistake everyone always tries."*
+
 <ins>2nd Week Notes:</ins> <br>
+By March 22nd:
 
-- 
+- The project GitHub account is created.
+- All members added to the repo and members practised "commit" action.
+
 <ins>3rd Week Notes:</ins> <br>
+By March 29th:
 
-- 
-- 
+<pre><ins>Mini-Project Milestone 1 </ins> </pre><br>
+
+- This week on Thursday, we met with Ashton in the office hours and discussed about our project's status.<br>
+
+We talked about the implementation of the microcontroller, motor's pumping speed, and water level sensors. As we mentioned in our project proposal, we're expecting the water level sensor to be the difficult part of the project.<br>
+
+We updated the TA what we have done and talked about our team meeting in the week. We determined the tasks we planned to do this week's experiment. <br>
+
+Today on Friday, we met with the team to test our motor, microcontroller and measure the speed of the pump. <br>
+
+In our group meeting today, we measured the speed of the pump. We found the running current of the motor to be 170 mA. The other experiment results with the water pump are below:
+
+1. 138 mL of water is filled in 4.75 sec
+ 
+2. 100ml of water is filled in 4.58 sec.
+ 
+3. 100mL of water is filled in 5.92 sec.
+ 
+4. 100ml of water is filled in 5.35 sec.
+ 
+5. 100ml of water is filled in 6.17 sec.
+ 
+avg 5.505 sec for 100ml.<br>
+
 <ins>4th Week Notes:</ins> <br>
+By April 5th:
+<pre><ins>Mini-Project Milestone 2 </ins> </pre><br>
+- 
+- 
 
-- 
-- 
 <ins>5th Week Notes:</ins> <br>
 
 - 
 - 
 
+<ins>6th Week Notes:</ins> <br>
+
+- 
+- 
 ## Testing
 
 
@@ -92,8 +140,15 @@ Have a wonderful day!
 
 
 
-# Consulted Peers:
-N/A
+# Credits
+- Thang Tran, Department of Chemical Engineering, The University of Utah:
+	- Thank you for your support on providing supplies in our experiments!
+
+- Ashton Snelgrove, Department of Electrical and Computer Engineering, The University of Utah:
+	- Thank you for your continuous support until the end of the semester!
+
+	
+	
 
 # Caution/Warnings
 
