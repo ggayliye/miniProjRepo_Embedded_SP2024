@@ -81,7 +81,7 @@ By March 22nd:
 <ins>3rd Week Notes:</ins> <br>
 By March 29th:
 
-<pre>* *Mini-Project Milestone 1*  </pre>
+* <pre>Mini-Project Milestone 1 :  </pre>
 
 This week on Thursday, we met with Ashton in the office hours and discussed about our project's status.<br>
 
@@ -105,23 +105,30 @@ In our group meeting today, we measured the speed of the pump. We found the runn
  
 Avg: 5.505 sec for 100ml.<br>
 
+Pictures from the 1st week experiment day: <br>
+![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/1stExpPics/1.jpg)
+![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/1stExpPics/2.jpg)
+![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/1stExpPics/3.jpg)
+![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/1stExpPics/4.jpg)
+
 <ins>4th Week Notes:</ins> <br>
 By April 5th:
-<pre> * *Mini-Project Milestone 2* </pre><br>
+* <pre> Mini-Project Milestone 2 :</pre><br>
 - 
 - 
 
 <ins>5th Week Notes:</ins> <br>
-<pre> * *Mini-Project Milestone 3* * </pre><br>
+* <pre> Mini-Project Milestone 3 : </pre><br>
 - 
 - 
 
 <ins>6th Week Notes:</ins> <br>
-<pre> * *Mini-Project Milestone 4* </pre><br>
+* <pre> Mini-Project Milestone 4 : </pre><br>
 - 
 - 
 ## Testing
-
+We will be testing the comepleted section of the peoject each week. Before the final week, we'll be testing the project with all components together. In the final week, we'll also demonstrate the project's function as a whole.
+Obtaining the components, this project can also be tested in another settings. We don't recommend to test this project to anyone who doesn't have full/complete information about this project.
 
 # Time Expenditures:
 <pre>Predicted Hours: 15h		Actual Hours:	h		 </pre>
@@ -129,7 +136,6 @@ By April 5th:
 The actual hours recorded on top reflect the time spent on the mini-project including the time spent in labs for experiments. It excludes time spent reading, researching, and understanding the contexts or materials that are required to complete the tasks related to the project.
 
 # Comments to Evaluators:
-
 
 Thank you for evaluating this project and providing feedback. <br>
 
@@ -147,12 +153,13 @@ Have a wonderful day!
 - Ashton Snelgrove, Department of Electrical and Computer Engineering, The University of Utah:
 	*- Thank you for your continuous support until the end of the semester!*
 
-	
-	
 
 # Caution/Warnings
 
-
+* Don't use any electric component that exceeds 5V.
+* Don't use any metal with a wet hand and touch an electric component.
+* Wash your hands after each experiment.
+* Don't drink the water you used for the testing/experiment.
 
 
 # Examples of Good Software Practice (GSP)
