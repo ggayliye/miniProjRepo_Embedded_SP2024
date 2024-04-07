@@ -4,7 +4,7 @@ Authors : Kyle G. Gayliyev, Hazen R. Brown, Prasanna Umbarkar, Mihir Rane <br>
 Date: 29- March - 2024<br>
 Course: ECE 6780 - Embedded System Design, ECE Department, The University of Utah<br>
 GitHub IDs: ggayliye, Hrb2003, prasannaumbarkar09, patientcoderMR7 <br>
-Repo:  <br> https://github.com/ggayliye/miniProjRepo_Embedded_SP2024 <br>
+Repo: https://github.com/ggayliye/miniProjRepo_Embedded_SP2024 <br>
 Date: By 26-April-2024, 11:59pm (Time of when submission is due/will be ready to be evaluated)<br>
 Copyright: ECE 6780, Kyle G. Gayliyev  - This work may not be copied for use in Academic Coursework.
 
@@ -58,19 +58,19 @@ By March 13th
 - The project proposal is submitted.
 - Feedback about our project proposal is received from the TA. It reads as following:<br>
 
-*"Good that you are considering safety. Think about how you can test the system without a tank and pump. <br><br>
+*"Good that you are considering safety. Think about how you can test the system without a tank and pump.* <br><br>
 
-Float sensors are another possibility you can consider for measuring the height. <br>
+*Float sensors are another possibility you can consider for measuring the height.* <br>
 
-Be careful of relying on a "known" rate, such as the pump time. Variations can make the integration of the rate become increasingly wrong over time as the error accumulates. Use the expected rate to do initial conditions and then use sensor feedback to adjust. <br>
+*Be careful of relying on a "known" rate, such as the pump time. Variations can make the integration of the rate become increasingly wrong over time as the error accumulates. Use the expected rate to do initial conditions and then use sensor feedback to adjust.* <br>
 
-You need to expand the detail of your milestones. You use verbs for activities, which is good. Some of your targets are less clear - be as detailed as possible about how you will demonstrate it working and what a successful implementation would be. What does "working" mean? How do you demo that? <br>
+*You need to expand the detail of your milestones. You use verbs for activities, which is good. Some of your targets are less clear - be as detailed as possible about how you will demonstrate it working and what a successful implementation would be. What does "working" mean? How do you demo that?* <br>
 
-Your first milestone falls into the "getting materials" anti-milestone. You cannot test something you don't have, and you need to make progress towards other goals. <br>
+*Your first milestone falls into the "getting materials" anti-milestone. You cannot test something you don't have, and you need to make progress towards other goals.* <br>
 
-Your risks are identified, but think about what you can do it the risk turns out to be true. If the water sensor is the challenge, do you have a fallback? What happens if you run over schedule? <br>
+*Your risks are identified, but think about what you can do it the risk turns out to be true. If the water sensor is the challenge, do you have a fallback? What happens if you run over schedule?* <br>
 
-Finally, make sure you don't fall in the trap of splitting the work up by person and then trying to bring everything together. This is a classic mistake everyone always tries."*
+*Finally, make sure you don't fall in the trap of splitting the work up by person and then trying to bring everything together. This is a classic mistake everyone always tries."*
 
 <ins>2nd Week Notes:</ins> <br>
 By March 22nd:
@@ -81,9 +81,9 @@ By March 22nd:
 <ins>3rd Week Notes:</ins> <br>
 By March 29th:
 
-<pre><ins>Mini-Project Milestone 1 </ins> </pre><br>
+<pre><ins> * Mini-Project Milestone 1 </ins> </pre>
 
-- This week on Thursday, we met with Ashton in the office hours and discussed about our project's status.<br>
+This week on Thursday, we met with Ashton in the office hours and discussed about our project's status.<br>
 
 We talked about the implementation of the microcontroller, motor's pumping speed, and water level sensors. As we mentioned in our project proposal, we're expecting the water level sensor to be the difficult part of the project.<br>
 
@@ -103,21 +103,21 @@ In our group meeting today, we measured the speed of the pump. We found the runn
  
 5. 100ml of water is filled in 6.17 sec.
  
-avg 5.505 sec for 100ml.<br>
+Avg: 5.505 sec for 100ml.<br>
 
 <ins>4th Week Notes:</ins> <br>
 By April 5th:
-<pre><ins>Mini-Project Milestone 2 </ins> </pre><br>
+<pre><ins>* Mini-Project Milestone 2 </ins> </pre><br>
 - 
 - 
 
 <ins>5th Week Notes:</ins> <br>
-
+<pre><ins>* Mini-Project Milestone 3 </ins> </pre><br>
 - 
 - 
 
 <ins>6th Week Notes:</ins> <br>
-
+<pre><ins>* Mini-Project Milestone 4 </ins> </pre><br>
 - 
 - 
 ## Testing
@@ -142,10 +142,10 @@ Have a wonderful day!
 
 # Credits
 - Thang Tran, Department of Chemical Engineering, The University of Utah:
-	- Thank you for your support on providing supplies in our experiments!
+	*- Thank you for your support on providing supplies in our experiments!*
 
 - Ashton Snelgrove, Department of Electrical and Computer Engineering, The University of Utah:
-	- Thank you for your continuous support until the end of the semester!
+	*- Thank you for your continuous support until the end of the semester!*
 
 	
 	
