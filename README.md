@@ -81,7 +81,7 @@ By March 22nd:
 <ins>3rd Week Notes:</ins> <br>
 By March 29th:
 
-* <pre>Mini-Project Milestone 1 :  </pre>
+ <pre>Mini-Project Milestone 1 :  </pre>
 
 This week on Thursday, we met with Ashton in the office hours and discussed about our project's status.<br>
 
@@ -93,19 +93,19 @@ Today on Friday, we met with the team to test our motor, microcontroller and mea
 
 In our group meeting today, we measured the speed of the pump. We found the running current of the motor to be 170 mA. The other experiment results with the water pump are below:
 
-1. 138 mL of water is filled in 4.75 sec
+1. *138 mL of water is filled in 4.75 sec.*
  
-2. 100ml of water is filled in 4.58 sec.
+2. *100ml of water is filled in 4.58 sec.*
  
-3. 100mL of water is filled in 5.92 sec.
+3. *100mL of water is filled in 5.92 sec.*
  
-4. 100ml of water is filled in 5.35 sec.
+4. *100ml of water is filled in 5.35 sec.*
  
-5. 100ml of water is filled in 6.17 sec.
+5. *100ml of water is filled in 6.17 sec.*
  
 Avg: 5.505 sec for 100ml.<br>
 
-Pictures from the 1st week experiment day: <br>
+Pictures from the experiment day: <br><br>
 ![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/1stExpPics/1.jpg)
 ![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/1stExpPics/2.jpg)
 ![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/1stExpPics/3.jpg)
@@ -113,21 +113,23 @@ Pictures from the 1st week experiment day: <br>
 
 <ins>4th Week Notes:</ins> <br>
 By April 5th:
-* <pre> Mini-Project Milestone 2 :</pre><br>
+<pre> Mini-Project Milestone 2 :</pre><br>
 - 
 - 
 
 <ins>5th Week Notes:</ins> <br>
-* <pre> Mini-Project Milestone 3 : </pre><br>
+<pre> Mini-Project Milestone 3 : </pre><br>
 - 
 - 
 
 <ins>6th Week Notes:</ins> <br>
-* <pre> Mini-Project Milestone 4 : </pre><br>
+<pre> Mini-Project Milestone 4 : </pre><br>
 - 
 - 
 ## Testing
-We will be testing the comepleted section of the peoject each week. Before the final week, we'll be testing the project with all components together. In the final week, we'll also demonstrate the project's function as a whole.
+- The water storage tank should be in a higher level than the water container that water is pumped from. Otherwise, the water transfer will occcur until the both containers' levels are balanced with the help of gravity without the pump.
+
+- We will be testing the comepleted section of the peoject each week. Before the final week, we'll be testing the project with all components together. In the final week, we'll also demonstrate the project's function as a whole.
 Obtaining the components, this project can also be tested in another settings. We don't recommend to test this project to anyone who doesn't have full/complete information about this project.
 
 # Time Expenditures:
