@@ -58,7 +58,7 @@ By March 13th
 - The project proposal is submitted.
 - Feedback about our project proposal is received from the TA. It reads as following:<br>
 
-*"Good that you are considering safety. Think about how you can test the system without a tank and pump.* <br><br>
+*"Good that you are considering safety. Think about how you can test the system without a tank and pump.* <br>
 
 *Float sensors are another possibility you can consider for measuring the height.* <br>
 
@@ -81,7 +81,7 @@ By March 22nd:
 <ins>3rd Week Notes:</ins> <br>
 By March 29th:
 
-<pre><ins> * Mini-Project Milestone 1 </ins> </pre>
+<pre>* *Mini-Project Milestone 1*  </pre>
 
 This week on Thursday, we met with Ashton in the office hours and discussed about our project's status.<br>
 
@@ -107,17 +107,17 @@ Avg: 5.505 sec for 100ml.<br>
 
 <ins>4th Week Notes:</ins> <br>
 By April 5th:
-<pre><ins>* Mini-Project Milestone 2 </ins> </pre><br>
+<pre> * *Mini-Project Milestone 2* </pre><br>
 - 
 - 
 
 <ins>5th Week Notes:</ins> <br>
-<pre><ins>* Mini-Project Milestone 3 </ins> </pre><br>
+<pre> * *Mini-Project Milestone 3* * </pre><br>
 - 
 - 
 
 <ins>6th Week Notes:</ins> <br>
-<pre><ins>* Mini-Project Milestone 4 </ins> </pre><br>
+<pre> * *Mini-Project Milestone 4* </pre><br>
 - 
 - 
 ## Testing
