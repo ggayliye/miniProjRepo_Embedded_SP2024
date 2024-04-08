@@ -114,8 +114,20 @@ Pictures from the experiment day: <br><br>
 <ins>4th Week Notes:</ins> <br>
 By April 5th:
 <pre> Mini-Project Milestone 2 :</pre><br>
-- 
-- 
+
+- This week on Friday, we met with TA Baily in the morning lab hours and discussed our project's status.
+
+- We talked about the implementation of the microcontroller and a water level sensor prototype.  We tested an LM324 comparator and metal probs to sense the water level. We successfully were able to trigger the interrupt that signals when the water storage tank is empty (water level). 
+
+- After the lab, we met to do the sensor-level testing and the comparator implementation.  Also, we were able to send the interrupt signal to the microcontroller to be able to read the signal and respond as an interrupt. The L292, from our soldering PCB assignment, is used to run the motor and change the motor speed adjusting PWM.
+
+- Water pump motor is driven at 4V allows modulation (PWM) between 80% and 100%.
+
+- We forsee our working motor speed may change when we progress on this project.
+
+
+
+
 
 <ins>5th Week Notes:</ins> <br>
 <pre> Mini-Project Milestone 3 : </pre><br>
