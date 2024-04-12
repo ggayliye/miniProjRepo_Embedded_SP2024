@@ -35,6 +35,33 @@ void  button_init(void) {
     GPIOC->PUPDR |= GPIO_PUPDR_PUPDR0_1;                                        // Set to pull-down
 }
 
+//Initialize low level sensor cutoff trigger
+void exti_init(void)	{
+	
+	//Configure user pushbutton for low water level sensor interrupt
+		RCC->AHBENR |= (1<<17); 
+		GPIOA->MODER &= ~((1<<0) | (1<<1));
+		GPIOA->OTYPER &= 0;
+		GPIOA->OSPEEDR &= 0;
+		GPIOA->PUPDR |= 2;
+		//Unmask interrupt generation on EXTI input. line 0
+		EXTI->IMR |= 1;
+		//Set input 0 to have a rising-edge trigger.
+		EXTI->RTSR |= 1;
+	
+		//Enable the SYSCFG Peripheral and enable PA0
+		RCC->APB2ENR |= 1;
+
+		SYSCFG->EXTICR[0] &= 0;
+	
+		__NVIC_EnableIRQ(EXTI0_1_IRQn);
+	
+		NVIC_SetPriority(SysTick_IRQn, 2);
+	
+		NVIC_SetPriority(EXTI0_1_IRQn, 1);
+	
+}
+
 /* Called by SysTick Interrupt
  * Performs button debouncing, changes wave type on button rising edge
  * Updates frequency output from ADC value
@@ -74,6 +101,8 @@ void HAL_SYSTICK_Callback(void) {
  * -------------------------------------------------------------------------------------------------------------
  */
 volatile uint32_t encoder_count = 0;
+volatile uint32_t PWM = 100;
+volatile uint32_t interruptCount = 0;
 
 int main(int argc, char* argv[]) {
 
@@ -81,14 +110,56 @@ int main(int argc, char* argv[]) {
 		HAL_Init();															// Initialize HAL
     LED_init();                             // Initialize LED's
     button_init();                          // Initialize button
-
     motor_init();                           // Initialize motor code
-
+	
+		exti_init();
+	
+		
+	
+	
     while (1) {
         GPIOC->ODR ^= GPIO_ODR_9;           // Toggle green LED (heartbeat)
         encoder_count = TIM2->CNT;
-        HAL_Delay(128);                      // Delay 1/8 second
+			
+				// PROJECT When board is reset, start filling for 4.5 seconds at 90% duty cycle
+				pwm_setDutyCycle(PWM);
+			
+        //HAL_Delay(128);                      // Delay 1/8 second
     }
 }
+
+//Handler to interrupt main when the water level drops below a set threshold. 
+void EXTI0_1_IRQHandler(void){
+	
+	//LAB02 PART01***********************************
+	static int check = 0; // Static variable to keep track of LED state
+	if(interruptCount == 0){
+	 PWM = 0;
+		interruptCount++;
+	}
+	else if(interruptCount == 1){
+		PWM = 100;
+		interruptCount = 0;
+	}
+	// Toggle between green and orange LEDs
+		
+		HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_8 | GPIO_PIN_9);
+	
+	//PROJECT
+	//Maybe kick off the water pump and wait until user reset 
+	
+	
+	 //Loop to break HAL delay library. (UNCOMMENT FOR PT2)
+	 for(int i = 0; i <= 1500000; i++){
+		 
+		 __asm volatile ("nop");
+	 }
+	 
+	
+	 HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_8 | GPIO_PIN_9);
+		
+		EXTI->PR |= 1;
+}
+
 
 // ----------------------------------------------------------------------------
