@@ -125,7 +125,11 @@ By April 5th:
 
 - We forsee our working motor speed may change when we progress on this project.
 
-
+Pictures from the Milestone 2 experiment day: <br><br>
+![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/2ndExpPics/1.jpg)
+![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/2ndExpPics/2.jpg)
+![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/2ndExpPics/3.jpg)
+![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/4.SensorPrototype_WaterLevel.jpg)
 
 
 
