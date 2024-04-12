@@ -10,6 +10,26 @@
  */
 volatile uint32_t debouncer;
 
+void tranchar(char key);
+
+void transtring(char key[]);
+
+void Parse();
+
+volatile int readData;
+volatile int flagSet;
+volatile int counter = 0;
+volatile char color;
+volatile int mode;
+
+char errorstring[] = {'E','R','R','O','R',':','\t','I','N','V','A','L','I','D','\t','K','E','Y','\n','\0'}; 
+char cmdprompt[] = {'C','M','D','?','\0'};
+char testpoint[] = {'a','a','a','\n','\0'};
+
+char char1[] = {'C','H','A','R','1','\n','\0'};
+char char2[] = {'C','H','A','R','2','\n','\0'};
+
+
 /* -------------------------------------------------------------------------------------------------------------
  *  Miscellaneous Core Functions
  *  -------------------------------------------------------------------------------------------------------------
@@ -59,6 +79,32 @@ void exti_init(void)	{
 		NVIC_SetPriority(SysTick_IRQn, 2);
 	
 		NVIC_SetPriority(EXTI0_1_IRQn, 1);
+	
+}
+
+void usart_init(void)		{
+	GPIOC->MODER |= (10 << 8);
+	
+	//Enable afrl for pc4 and pc5 
+	// 00010001 shifted left 16 (AF1) (AF1)
+	GPIOC->AFR[0] |= (17 << 16); 
+	
+	//Enable the clock to the USART register. 
+	//Writes a 1 to enable USART3 Clock
+	RCC->APB1ENR |= (1 << 18);
+	
+	//Set the baud rate BRR value
+	USART3->BRR = 69; //69(HAL_RCC_GetHCLKFreq()/115200)
+	
+	//Enable transmit and recieve as well as enable the USART
+	USART3->CR1 |= 13;
+	
+	//Enable RXNE Interrupt
+	USART3->CR1 |= (1<<5);
+	
+	//Interrupt enable 
+	__NVIC_EnableIRQ(USART3_4_IRQn);
+	NVIC_SetPriority(USART3_4_IRQn, 0);
 	
 }
 
@@ -113,7 +159,7 @@ int main(int argc, char* argv[]) {
     motor_init();                           // Initialize motor code
 	
 		exti_init();
-	
+		usart_init();
 		
 	
 	
@@ -121,12 +167,168 @@ int main(int argc, char* argv[]) {
         GPIOC->ODR ^= GPIO_ODR_9;           // Toggle green LED (heartbeat)
         encoder_count = TIM2->CNT;
 			
+				if(flagSet == 1){
+			
+					Parse();
+				
+					flagSet = 0;
+			
+				}
+				
 				// PROJECT When board is reset, start filling for 4.5 seconds at 90% duty cycle
 				pwm_setDutyCycle(PWM);
 			
         //HAL_Delay(128);                      // Delay 1/8 second
     }
 }
+
+//************************************************************************
+
+void Parse(void){
+	
+	if(counter == 0){
+		color = readData;
+		
+		if(!(color == 'a'|| color == 'm' || color == 'g' || color == 'o')){
+			transtring(errorstring);
+			counter = 0;
+		}
+		else{
+			transtring(char1);
+			counter++;
+		}
+	}
+	else if(counter == 1){
+		mode = readData;
+		transtring(char2);
+		counter++;
+		
+	}
+	
+	//transtring(testpoint);
+	if(counter == 2){
+		if(color == 'a'){
+			if(mode == '0'){
+				//Turn off LED
+				//GPIOC->BSRR |= (1<<22);
+				PWM = 0;
+			}
+			else if(mode == '1'){
+				//Turn on LED
+				//GPIOC->BSRR |= (1<<6);
+				PWM = 100;
+			}
+			else if(mode == '2'){
+				//Toggle LED
+				HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_6);
+			}
+			else
+				transtring(errorstring);
+			
+		}
+		else if(color == 'o'){
+			if(mode == '0'){
+				//Turn off LED
+				GPIOC->BSRR |= (1<<24);
+			}
+			else if(mode == '1'){
+				//Turn on LED
+				GPIOC->BSRR |= (1<<8);
+			}
+			else if(mode == '2'){
+				//Toggle LED
+				HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_8);
+			}
+			else
+				transtring(errorstring);
+			
+			
+		}
+		else if(color == 'g'){
+			if(mode == '0'){
+				//Turn off LED
+				GPIOC->BSRR |= (1<<25);
+			}
+			else if(mode == '1'){
+				//Turn on LED
+				GPIOC->BSRR |= (1<<9);
+			}
+			else if(mode == '2'){
+				//Toggle LED
+				HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_9);
+			}
+			else
+				transtring(errorstring);
+				
+			
+		}
+		else if(color == 'b'){
+			if(mode == '0'){
+				//Turn off LED
+				GPIOC->BSRR |= (1<<23);
+			}
+			else if(mode == '1'){
+				//Turn on LED
+				GPIOC->BSRR |= (1<<7);
+			}
+			else if(mode == '2'){
+				//Toggle LED
+				HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_7);
+			}
+			else
+				transtring(errorstring);
+		}
+		//Error message if invalid color is entered
+		else if(color != 13 || color != 'r' || color != 'g' || color != 'b' || color != 'o')  {
+			transtring(errorstring);
+		}
+		counter = 0;
+	}
+		
+	
+}
+	
+//USART3 Interrupt handler
+void USART3_4_IRQHandler(void){
+	
+	if (USART3->ISR & USART_ISR_RXNE){
+	//transtring(testpoint);
+		flagSet = 1;
+		
+		readData = USART3->RDR;
+		//transtring(testpoint);
+	}
+	
+}
+// Function used to transmit a character
+// Takes a single character parameter and saves that into the TDR register.
+void tranchar(char key)
+{
+	//While the transmit data register is not empty...
+	// USART3->ISR != (USART3->ISR &= USART_ISR_TXE_Msk) 
+	while(!(USART3->ISR & USART_ISR_TXE))
+	{
+		
+	}
+	
+	USART3->TDR = key;
+}
+
+//Function used to transmit a string of chars
+//Takes an array of chars and transmits each char seperately. 
+void transtring(char key[])
+{
+	
+		char current = key[0];
+		
+		for(int i = 0; current != 0; i++)
+		{
+			current = key[i];
+			tranchar(current);
+		}
+}
+
+//************************************************************************************
 
 //Handler to interrupt main when the water level drops below a set threshold. 
 void EXTI0_1_IRQHandler(void){
