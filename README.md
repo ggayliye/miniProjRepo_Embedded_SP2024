@@ -1,4 +1,4 @@
-# Mini-Project: Water Storage Tank Control
+# Mini-Project: Water Storage Tank Refill And Safety Control
 
 Authors : Kyle G. Gayliyev, Hazen R. Brown, Prasanna Umbarkar, Mihir Rane <br>
 Date: 29- March - 2024<br>
@@ -132,14 +132,14 @@ Pictures from the Milestone 2 experiment day: <br><br>
 ![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/4.SensorPrototype_WaterLevel.jpg)
 
 
-
 <ins>5th Week Notes:</ins> <br>
 <pre> Mini-Project Milestone 3 : </pre><br>
+
 - 
 - 
 
 <ins>6th Week Notes:</ins> <br>
-<pre> Mini-Project Milestone 4 : </pre><br>
+<pre> Mini-Project Milestone 4 Final submission : </pre><br>
 - 
 - 
 ## Testing
