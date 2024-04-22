@@ -18,6 +18,10 @@ Copyright: ECE 6780, Kyle G. Gayliyev  - This work may not be copied for use in 
 * The technical implementation of the “unsafe water” indicator is going to be in the container. It’s planned to be a simple design: installing an active power probs inside the container. When water hosts polluting electroconductive elements, it will create a path to transfer electrons that will trigger the measuring sensor. The power source will be set very low; it will be very safe to use. 
 * Our design will be very safe to use as we take all precautions and safety measurements before the launch.
 
+## List of Materials : 
+
+![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/7.PartsList.jpg)
+
 ## Functional block diagram of The Project: 
 
 ![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/1.schematic.jpg)
@@ -135,8 +139,21 @@ Pictures from the Milestone 2 experiment day: <br><br>
 <ins>5th Week Notes:</ins> <br>
 <pre> Mini-Project Milestone 3 : </pre><br>
 
-- 
-- 
+- On Friday during our lab time on 12th of April, we gathered with all team members to progress our project one step further. In our meeting, we implemented the sensor signal-microcontroller interface and UART-microcontroller interface.
+
+- At the beginning of the project, we had predicted the most challenging part would have been implementing the water level sensor. This sensor implementation was expected to be challenging because it should sense the empty status of the water container. However, it's good news that we were able to successfully implement it during our lab meeting this week.
+
+- To give a little bit of background information on how the empty tank sensing should work is that we implemented the physical sensor on the bottom of the water tank wired with a microcontroller connection. When the water level reaches low, the sensor sends an analog signal to an op-amp that works as a comparator. It compares the Vp and Vn input pins and outputs Vcc in the Vout that is connected to the microcontroller. When the analog signal is received from the op-amp, which will be signaling that the container is empty, the microcontroller will turn the water pump on, and the pump starts refilling the water container. The microcontroller will interrupt in the end when the container is full and that will indicate the time to stop pumping water .
+
+![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/3rdExpPics/1.jpg)
+![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/3rdExpPics/2.jpg)
+![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/3rdExpPics/3.jpg)
+![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/3rdExpPics/4.jpg)
+![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/3rdExpPics/5.jpg)
+![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/3rdExpPics/6.jpg)
+![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/6.UART_USB.jpg)
+
+
 
 <ins>6th Week Notes:</ins> <br>
 <pre> Mini-Project Milestone 4 Final submission : </pre><br>
