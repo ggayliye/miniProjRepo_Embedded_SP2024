@@ -23,6 +23,7 @@ volatile char color;
 volatile int mode;
 
 char errorstring[] = {'E','R','R','O','R',':','\t','I','N','V','A','L','I','D','\t','K','E','Y','\n','\0'}; 
+char errorstring2[] = {'T','O','X','I','C','\t','W','A','T','E','R','\t','R','E','S','E','T','\n','\0'}; 
 char cmdprompt[] = {'C','M','D','?','\0'};
 char testpoint[] = {'a','a','a','\n','\0'};
 
@@ -38,13 +39,13 @@ char char2[] = {'C','H','A','R','2','\n','\0'};
 void LED_init(void) {
     // Initialize PC8 and PC9 for LED's
     RCC->AHBENR |= RCC_AHBENR_GPIOCEN;                                          // Enable peripheral clock to GPIOC
-    GPIOC->MODER |= GPIO_MODER_MODER8_0 | GPIO_MODER_MODER9_0;                  // Set PC8 & PC9 to outputs
-    GPIOC->OTYPER &= ~(GPIO_OTYPER_OT_8 | GPIO_OTYPER_OT_9);                    // Set to push-pull output type
-    GPIOC->OSPEEDR &= ~((GPIO_OSPEEDR_OSPEEDR8_0 | GPIO_OSPEEDR_OSPEEDR8_1) |
-                        (GPIO_OSPEEDR_OSPEEDR9_0 | GPIO_OSPEEDR_OSPEEDR9_1));   // Set to low speed
-    GPIOC->PUPDR &= ~((GPIO_PUPDR_PUPDR8_0 | GPIO_PUPDR_PUPDR8_1) |
-                      (GPIO_PUPDR_PUPDR9_0 | GPIO_PUPDR_PUPDR9_1));             // Set to no pull-up/down
-    GPIOC->ODR &= ~(GPIO_ODR_8 | GPIO_ODR_9);                                   // Shut off LED's
+    GPIOC->MODER |= GPIO_MODER_MODER8_0 | GPIO_MODER_MODER9_0 | GPIO_MODER_MODER6_0 | GPIO_MODER_MODER7_0;                  // Set PC8 & PC9 to outputs
+    GPIOC->OTYPER &= ~(GPIO_MODER_MODER8_0 | GPIO_MODER_MODER9_0 | GPIO_MODER_MODER6_0 | GPIO_MODER_MODER7_0);                    // Set to push-pull output type
+    GPIOC->OSPEEDR &= ~((GPIO_MODER_MODER8_0 | GPIO_MODER_MODER9_0 | GPIO_MODER_MODER6_0 | GPIO_MODER_MODER7_0) |
+                        (GPIO_MODER_MODER8_0 | GPIO_MODER_MODER9_0 | GPIO_MODER_MODER6_0 | GPIO_MODER_MODER7_0));   // Set to low speed
+    GPIOC->PUPDR &= ~((GPIO_MODER_MODER8_0 | GPIO_MODER_MODER9_0 | GPIO_MODER_MODER6_0 | GPIO_MODER_MODER7_0 | GPIO_PUPDR_PUPDR8_1) |
+                      (GPIO_MODER_MODER8_0 | GPIO_MODER_MODER9_0 | GPIO_MODER_MODER6_0 | GPIO_MODER_MODER7_0));             // Set to no pull-up/down
+    GPIOC->ODR &= ~(GPIO_MODER_MODER8_0 | GPIO_MODER_MODER9_0 | GPIO_MODER_MODER6_0 | GPIO_MODER_MODER7_0);                                   // Shut off LED's
 }
 
 void  button_init(void) {
@@ -59,26 +60,53 @@ void  button_init(void) {
 void exti_init(void)	{
 	
 	//Configure user pushbutton for low water level sensor interrupt
-		RCC->AHBENR |= (1<<17); 
+		RCC->AHBENR |= (1<<17); //GPIOA enable
+		RCC->AHBENR |= (1<<18);	//GPIOB enable
+	
 		GPIOA->MODER &= ~((1<<0) | (1<<1));
 		GPIOA->OTYPER &= 0;
 		GPIOA->OSPEEDR &= 0;
 		GPIOA->PUPDR |= 2;
-		//Unmask interrupt generation on EXTI input. line 0
-		EXTI->IMR |= 1;
-		//Set input 0 to have a rising-edge trigger.
-		EXTI->RTSR |= 1;
+	
+	//????????????????????????????????????????????????????????
+		GPIOB->MODER &= ~((1<<6) | (1<<7));
+		GPIOB->OTYPER &= 0;
+		GPIOB->OSPEEDR &= 0;
+		GPIOB->PUPDR |= (2<<6);
+		
+		EXTI->IMR |= (1<<3); //PA3
+
+	//??????????????????????????????????????????????????????????
+		//Unmask interrupt generation on EXTI input.
+		EXTI->IMR |= 1; //PA0
+		
+	
+		//Set input to have a rising-edge trigger.
+		EXTI->RTSR |= 1; //PA0
+		EXTI->RTSR |= (1<<3); //PB3
 	
 		//Enable the SYSCFG Peripheral and enable PA0
 		RCC->APB2ENR |= 1;
+		//*****************************************
+		SYSCFG->EXTICR[0] &= 0;	//EXTI0
+		
+		SYSCFG->EXTICR[0] |= (1<<12);	//EXTI3
+		//?????? test
+		
 
-		SYSCFG->EXTICR[0] &= 0;
-	
+		//?????? test end
+		
+		
 		__NVIC_EnableIRQ(EXTI0_1_IRQn);
+		__NVIC_EnableIRQ(EXTI2_3_IRQn);
 	
 		NVIC_SetPriority(SysTick_IRQn, 2);
 	
+	
 		NVIC_SetPriority(EXTI0_1_IRQn, 1);
+		
+		
+		NVIC_SetPriority(EXTI2_3_IRQn, 0);
 	
 }
 
@@ -114,7 +142,6 @@ void usart_init(void)		{
  */
 void HAL_SYSTICK_Callback(void) {
     // Remember that this function is called by the SysTick interrupt
-    // You can't call any functions in here that use delay
 
     debouncer = (debouncer << 1);
     if(GPIOA->IDR & (1 << 0)) {
@@ -147,8 +174,11 @@ void HAL_SYSTICK_Callback(void) {
  * -------------------------------------------------------------------------------------------------------------
  */
 volatile uint32_t encoder_count = 0;
-volatile uint32_t PWM = 100;
+volatile uint32_t PWM = 0;
+volatile uint32_t PWMcap = 100;
 volatile uint32_t interruptCount = 0;
+volatile uint32_t burn = 0;\
+volatile uint32_t toxicflag = 0;
 
 int main(int argc, char* argv[]) {
 
@@ -163,7 +193,10 @@ int main(int argc, char* argv[]) {
 		
 	
 	
+	
     while (1) {
+			
+			if(toxicflag == 0){
         GPIOC->ODR ^= GPIO_ODR_9;           // Toggle green LED (heartbeat)
         encoder_count = TIM2->CNT;
 			
@@ -176,13 +209,25 @@ int main(int argc, char* argv[]) {
 				}
 				
 				// PROJECT When board is reset, start filling for 4.5 seconds at 90% duty cycle
-				pwm_setDutyCycle(PWM);
+				if(PWM > 0){
+					pwm_setDutyCycle(PWM);
+					GPIOC->BSRR |= (1<<8);
+					HAL_Delay(4000); 
+					GPIOC->BSRR |= (1<<24);
+					PWM = 0;
+				}
 			
-        //HAL_Delay(128);                      // Delay 1/8 second
+        //                     // Delay 1/8 second
     }
+		else if(toxicflag > 0){
+			transtring(errorstring2);
+			break;
+		}
+		
+	}
 }
 
-//************************************************************************
+//?************************************************************************
 
 void Parse(void){
 	
@@ -211,16 +256,16 @@ void Parse(void){
 			if(mode == '0'){
 				//Turn off LED
 				//GPIOC->BSRR |= (1<<22);
-				PWM = 0;
+				PWMcap = 0;
 			}
 			else if(mode == '1'){
 				//Turn on LED
 				//GPIOC->BSRR |= (1<<6);
-				PWM = 100;
+				PWMcap = 100;
 			}
 			else if(mode == '2'){
 				//Toggle LED
-				HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_6);
+				PWMcap = 80;
 			}
 			else
 				transtring(errorstring);
@@ -328,19 +373,21 @@ void transtring(char key[])
 		}
 }
 
-//************************************************************************************
+//?************************************************************************************
 
 //Handler to interrupt main when the water level drops below a set threshold. 
 void EXTI0_1_IRQHandler(void){
-	
-	//LAB02 PART01***********************************
+
 	static int check = 0; // Static variable to keep track of LED state
 	if(interruptCount == 0){
-	 PWM = 0;
+	 PWM = PWMcap;
+		GPIOC->BSRR |= (1<<7); // blue LED signals pump is running
 		interruptCount++;
+		burn = 1;
 	}
 	else if(interruptCount == 1){
-		PWM = 100;
+		PWM = 0;
+		GPIOC->BSRR |= (1<<23); // turn LED signal off
 		interruptCount = 0;
 	}
 	// Toggle between green and orange LEDs
@@ -352,16 +399,31 @@ void EXTI0_1_IRQHandler(void){
 	
 	
 	 //Loop to break HAL delay library. (UNCOMMENT FOR PT2)
-	 for(int i = 0; i <= 1500000; i++){
+	 //for(int i = 0; i <= 150000; i++){
 		 
-		 __asm volatile ("nop");
-	 }
+		//		__asm volatile ("nop");
+	 //}
 	 
 	
 	 HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_8 | GPIO_PIN_9);
 		
 		EXTI->PR |= 1;
 }
+
+//Toxic water interrupt
+void EXTI2_3_IRQHandler(void){
+
+	
+		//Turn motor off and transmit message
+		pwm_setDutyCycle(0);
+
+		GPIOC->BSRR |= (1<<6);
+		toxicflag = 1;
+		//Dont exit interrupt, user reset is now required.
+	
+		EXTI->PR |= 1;
+}
+
 
 
 // ----------------------------------------------------------------------------

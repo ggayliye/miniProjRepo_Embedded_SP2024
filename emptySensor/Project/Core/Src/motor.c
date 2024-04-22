@@ -60,7 +60,9 @@ void pwm_setDutyCycle(uint8_t duty) {
     if(duty <= 100) {
         TIM14->CCR1 = ((uint32_t)duty*TIM14->ARR)/100;  // Use linear transform to produce CCR1 value
         // (CCR1 == "pulse" parameter in PWM struct used by peripheral library)
+			
     }
+		
 }
 
 // Sets up encoder interface to read motor speed
@@ -69,6 +71,7 @@ void encoder_init(void) {
     // Set up encoder input pins (TIMER 3 CH1 and CH2)
     RCC->AHBENR |= RCC_AHBENR_GPIOBEN;
 
+		//UNCOMMENT THESE TEST
     GPIOB->MODER &= ~(GPIO_MODER_MODER4_0 | GPIO_MODER_MODER5_0);
     GPIOB->MODER |= (GPIO_MODER_MODER4_1 | GPIO_MODER_MODER5_1);
     GPIOB->AFR[0] |= ( (1 << 16) | (1 << 20) );
@@ -102,7 +105,6 @@ void encoder_init(void) {
     NVIC_EnableIRQ(TIM6_DAC_IRQn);          // Enable interrupt in NVIC
     NVIC_SetPriority(TIM6_DAC_IRQn,2);
 }
-
 // Encoder interrupt to calculate motor speed, also manages PI controller
 void TIM6_DAC_IRQHandler(void) {
     /* Calculate the motor speed in raw encoder counts
