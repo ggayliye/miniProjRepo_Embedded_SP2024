@@ -1,4 +1,4 @@
-# Mini-Project: Water Storage Tank Refill And Safety Control
+# Final-Project: Water Storage Tank Refill And Safety Control
 
 Authors : Kyle G. Gayliyev, Hazen R. Brown, Prasanna Umbarkar, Mihir Rane <br>
 Date: 29- March - 2024<br>
@@ -11,12 +11,15 @@ Copyright: ECE 6780, Kyle G. Gayliyev  - This work may not be copied for use in 
 ## Overview of the Project
 * Pumping water into a container that stops by itself when it's full and fills back again the exact amount when it gets empty. 
 * Water fill station that automatically stops dispensing when full, implementation would sense water level without touching it. 
-* A small 3V water pump will be connected to the power. The objective is to fill a water container. Once it reaches its high/full level, a signal will be sent to the microcontroller. The microcontroller will interrupt the water pump indicating the water container is full. The same process will take place when it’s empty. The water pump will start working and pump water into the container. 
-* The container will include a sensor. This sensor is expected to be placed on the bottom of the container. It’ll sense when the container is “empty” and ready to be filled. To determine the container’s full state, the water-amount-calculation method will be used: the volume of the container will be known (mL), the speed of the pump for flowing water through a vinyl pipe will be known (x mL/s), and we calculate the amount of time the water pump should be kept on. 
-* A BJT transistor is planned to be implemented in the circuit to indicate LEDs that will signal the container is full or empty to make it convenient for users. Other signals-such as sound/voice-can also be implemented to warn the container’s state. 
-* For the user’s drinking water safety, a “water safety” measurement will be implemented. This implementation will only be based on chemicals that are ionic and/or electroconductive. Specifically, we will focus on Sodium chloride (NaCl) in our testing. This means that the “unsafe” measurement will be sensitive to salt. 
+* A small 4V water pump will be connected to the power. The objective is to refill a water container. Once it reaches its high/full level, a signal will be sent to the microcontroller. The microcontroller will interrupt the water pump indicating the water container is full. The same process will take place when it’s empty. The water pump will start working and pump water into the container. 
+* The container will include a sensor. This sensor will be placed on the bottom of the container. It’ll sense when the container is “empty” and ready to be refilled. To determine the container’s full state, the water-amount-calculation method will be used: the volume of the container will be known (mL), the speed of the pump for flowing water through a vinyl pipe will be known (x mL/s), and we calculate the amount of time the water pump should be kept on. 
+* For the water safety control circuit, we use a MOSFET, an op-amp, an LED, and a speaker. When the water gets salty (adding salt to the water), the alarm will sound along with an LED warning the water is not safe.
+* Once the water starts filling the tank, a message is popped on the terminal "Tank empty-water filling in progress" and when completed "tank filled". Also when salt is added toxicity of water can be indicated by "toxic water" on the terminal. This is all done by UART.
+* The water safety implementation will only be based on chemicals that are ionic and/or electroconductive. Specifically, we will focus on Sodium chloride (NaCl) in our testing. This means that the “unsafe” measurement will be sensitive to salt. 
 * The technical implementation of the “unsafe water” indicator is going to be in the container. It’s planned to be a simple design: installing an active power probs inside the container. When water hosts polluting electroconductive elements, it will create a path to transfer electrons that will trigger the measuring sensor. The power source will be set very low; it will be very safe to use. 
+* This project has applications in drinking water storage tanks, petroleum refineries, and more. 
 * Our design will be very safe to use as we take all precautions and safety measurements before the launch.
+* In this project, we implemented interrupt, GPIO, UART, and motor drive.
 
 ## List of Materials : 
 
@@ -109,6 +112,8 @@ In our group meeting today, we measured the speed of the pump. We found the runn
  
 Avg: 5.505 sec for 100ml.<br>
 
+- We will be testing the comepleted section of the peoject each week. Before the final week, we'll be testing the project with all components together. In the final week, we'll also demonstrate the project's function as a whole.
+
 Pictures from the experiment day: <br><br>
 ![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/1stExpPics/1.jpg)
 ![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/1stExpPics/2.jpg)
@@ -157,9 +162,16 @@ Pictures from the Milestone 2 experiment day: <br><br>
 
 <ins>6th Week Notes:</ins> <br>
 <pre> Mini-Project Milestone 4 Final submission : </pre><br>
-- 
-- 
-
+- Today, on April 24th, we meet up to complete our project in the lab. We successfully implemented toxicity detection, as well as water level detection with UART messages displayed in the terminal.
+- Our project implemented water storage tank refill and safety control. In our previous milestones, we had implemented water pump control using a motor driver we created and soldered in one of our class lab assignments, microcontroller, UART transmit and receive interface, and GPIO LED implementation. 
+- The project implementation starts when the water storage tank is full. Today during our lab tests, first, we drained water and checked the water level sensor's response.
+- The water level sensor is set close to the bottom of the tank. When the tank was fairly empty, we verified that the microcontroller gave a start to the pump.
+- The water pump kept running while pumping water until the water storage tank was refilled. It was interrupted by the microcontroller stopping the pump when the water level reached full. 
+- Second, we tested the safety control of the water container. As we mentioned before, we did this test with NaCl(salt). 
+- After setting up the experiment equipment, we poured some salt into the container. Our circuit implements safety control triggered by the salt added into the water alarming by a speaker and making an LED on.
+- The alarm system is built using an op-amp and an NMOS. The NMOS transistor works as a switch allowing a square wave set up as a sweep flowing from drain to source.
+- Additionally, our system allows for manual control of the pump over UART. A user can turn the pump on and off, as well as change between three preset pump rates. The microcontroller will automatically send messages to the terminal when the tank is empty, or full, or if the water has gone toxic. 
+- Overall, we completed all milestones and tasks for this mini-project that were initially set.
 
 
 ![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/4thExpPics_final/1.jpg)
@@ -172,14 +184,12 @@ Pictures from the Milestone 2 experiment day: <br><br>
 ![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/4thExpPics_final/8.jpg)
 ![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/4thExpPics_final/9.jpg)
 
-## Testing
-- The water storage tank should be in a higher level than the water container that water is pumped from. Otherwise, the water transfer will occcur until the both containers' levels are balanced with the help of gravity without the pump.
 
-- We will be testing the comepleted section of the peoject each week. Before the final week, we'll be testing the project with all components together. In the final week, we'll also demonstrate the project's function as a whole.
-Obtaining the components, this project can also be tested in another settings. We don't recommend to test this project to anyone who doesn't have full/complete information about this project.
+
+
 
 # Time Expenditures:
-<pre>Predicted Hours: 15h		Actual Hours:	h		 </pre>
+<pre>Predicted Hours: 15h		Actual Hours:	16h		 </pre>
 
 The actual hours recorded on top reflect the time spent on the mini-project including the time spent in labs for experiments. It excludes time spent reading, researching, and understanding the contexts or materials that are required to complete the tasks related to the project.
 
@@ -189,7 +199,23 @@ Thank you for evaluating this project and providing feedback. <br>
 
 Have a wonderful day!
 
-## Testing Instructions:
+# Testing
+
+
+- The water storage tank should be in a higher level than the water container that water is pumped from. Otherwise, the water transfer will occcur until the both containers' levels are balanced with the help of gravity without the pump.
+
+##Test Set up
+
+- Two water containers are needed one of them to be filled with water and the other one can be just a little over the water level sensor.
+- Both conteners should host a wire that current flows through the water. This will serve measurung the resistance of the water and comparing and sending the signals to the LM324 op-amp Vp and Vn pins.
+- This op-amp output should go to an NMOS transoistor gate. The NMOS transistor drain receives a square wave with a sweep in 10 Hz to 1.5 kHz. The sweep time should be set to 900ms. The amplitude should be set to 4 Vpp. On the source of the NMOS, a speaker is connected. The speaker's other end is connected to Ground. 
+- The op-amp receives 5V in DC on the +Vdd and 0V/Ground on the -Vdd.
+- 
+- On the water pump operation, the pump is connected to 4V DC from power supply.
+
+
+
+Obtaining the components, this project can also be tested in another settings. We don't recommend to test this project to anyone who doesn't have full/complete information about this project.
 
 
 
