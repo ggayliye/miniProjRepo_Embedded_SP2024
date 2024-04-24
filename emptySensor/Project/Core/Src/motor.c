@@ -72,9 +72,9 @@ void encoder_init(void) {
     RCC->AHBENR |= RCC_AHBENR_GPIOBEN;
 
 		//UNCOMMENT THESE TEST
-    GPIOB->MODER &= ~(GPIO_MODER_MODER4_0 | GPIO_MODER_MODER5_0);
-    GPIOB->MODER |= (GPIO_MODER_MODER4_1 | GPIO_MODER_MODER5_1);
-    GPIOB->AFR[0] |= ( (1 << 16) | (1 << 20) );
+    //GPIOB->MODER &= ~(GPIO_MODER_MODER4_0 | GPIO_MODER_MODER5_0);
+    //GPIOB->MODER |= (GPIO_MODER_MODER4_1 | GPIO_MODER_MODER5_1);
+    //GPIOB->AFR[0] |= ( (1 << 16) | (1 << 20) );
 
     // Set up encoder interface (TIM3 encoder input mode)
     RCC->APB1ENR |= RCC_APB1ENR_TIM3EN;
@@ -185,52 +185,6 @@ void PI_update(void) {
      *       Recommend that you clamp between 0 and 3200 (what is used in the lab solution)
      */
 		 
-		 if(error_integral < 0)
-		 {
-			 error_integral = 0;
-		 }
-		 else if(error_integral > 3200)
-		 {
-			 error_integral = 3200;
-		 }
-    
-    /// TODO: Calculate proportional portion, add integral and write to "output" variable
-		 
-    
-    //int16_t output = (Kp * error);
-		// output = output + (error_integral);
-		 
-    /* Because the calculated values for the PI controller are significantly larger than 
-     * the allowable range for duty cycle, you'll need to divide the result down into 
-     * an appropriate range. (Maximum integral clamp / X = 100% duty cycle)
-     * 
-     * Hint: If you chose 3200 for the integral clamp you should divide by 32 (right shift by 5 bits), 
-     *       this will give you an output of 100 at maximum integral "windup".
-     *
-     * This division also turns the above calculations into pseudo fixed-point. This is because
-     * the lowest 5 bits act as if they were below the decimal point until the division where they
-     * were truncated off to result in an integer value. 
-     *
-     * Technically most of this is arbitrary, in a real system you would want to use a fixed-point
-     * math library. The main difference that these values make is the difference in the gain values
-     * required for tuning.
-     */
-
-     /// TODO: Divide the output into the proper range for output adjustment
-		 
-     //output = output / 32; 
-		 
-     /// TODO: Clamp the output value between 0 and 100 
-     //if(output > 100)
-		 //{
-		//	 output = 100;
-		 //}
-		// else if(output < 0)
-		// {
-		//	 output = 0;
-		// }
-		 //output = 100;
-		 //test output = 60;
 		 
     pwm_setDutyCycle(duty_cycle);
     duty_cycle = duty_cycle;            // For debug viewing
