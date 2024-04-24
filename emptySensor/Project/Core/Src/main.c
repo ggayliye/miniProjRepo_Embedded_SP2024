@@ -5,7 +5,7 @@
 #include "motor.h"
 
 /* -------------------------------------------------------------------------------------------------------------
- *  Global Variable Declarations
+ *  Final Project Code - Water level controller and toxicity sensor 
  *  -------------------------------------------------------------------------------------------------------------
  */
 volatile uint32_t debouncer;
@@ -23,12 +23,13 @@ volatile char color;
 volatile int mode;
 
 char errorstring[] = {'E','R','R','O','R',':','\t','I','N','V','A','L','I','D','\t','K','E','Y','\n','\0'}; 
-char errorstring2[] = {'T','O','X','I','C','\t','W','A','T','E','R','\t','R','E','S','E','T','\n','\0'}; 
+char one[] = {'T','a','n','k',' ','E','m','p','t','y',',',' ','f','i','l','l','i','n','g',' ','i','n',' ','p','r','o','g','r','e','s','s','\n','\0'};
+char done[] = {'F','i','l','l','i','n','g',' ','i','s',' ','c','o','m','p','l','e','t','e','!','\n','\0'};	
+char errorstring2[] = {'T','O','X','I','C',' ','W','A','T','E','R','\t','M','A','N','U','A','L',' ','R','E','S','E','T',' ','R','E','Q','U','I','R','E','D','\n','\0'}; 
 char cmdprompt[] = {'C','M','D','?','\0'};
-char testpoint[] = {'a','a','a','\n','\0'};
 
-char char1[] = {'C','H','A','R','1','\n','\0'};
-char char2[] = {'C','H','A','R','2','\n','\0'};
+char char1[] = {' ','M','o','d','e','\n','\0'};
+char char2[] = {' ','S','e','t','t','i','n','g','\n','\0'};
 
 
 /* -------------------------------------------------------------------------------------------------------------
@@ -68,15 +69,14 @@ void exti_init(void)	{
 		GPIOA->OSPEEDR &= 0;
 		GPIOA->PUPDR |= 2;
 	
-	//????????????????????????????????????????????????????????
 		GPIOB->MODER &= ~((1<<6) | (1<<7));
 		GPIOB->OTYPER &= 0;
 		GPIOB->OSPEEDR &= 0;
 		GPIOB->PUPDR |= (2<<6);
+	//GPIOB->PUPDR |= (2<<6);
 		
 		EXTI->IMR |= (1<<3); //PA3
 
-	//??????????????????????????????????????????????????????????
 		//Unmask interrupt generation on EXTI input.
 		EXTI->IMR |= 1; //PA0
 		
@@ -84,29 +84,26 @@ void exti_init(void)	{
 		//Set input to have a rising-edge trigger.
 		EXTI->RTSR |= 1; //PA0
 		EXTI->RTSR |= (1<<3); //PB3
+
 	
 		//Enable the SYSCFG Peripheral and enable PA0
 		RCC->APB2ENR |= 1;
-		//*****************************************
+	
 		SYSCFG->EXTICR[0] &= 0;	//EXTI0
 		
 		SYSCFG->EXTICR[0] |= (1<<12);	//EXTI3
-		//?????? test
 		
-
-		//?????? test end
-		
-		
+		//Set priority of external interrupts, shut down being highest priority
 		__NVIC_EnableIRQ(EXTI0_1_IRQn);
 		__NVIC_EnableIRQ(EXTI2_3_IRQn);
 	
-		NVIC_SetPriority(SysTick_IRQn, 2);
+		NVIC_SetPriority(SysTick_IRQn, 3);
 	
-	
+		//Low water level interrupt on PA0
 		NVIC_SetPriority(EXTI0_1_IRQn, 1);
 		
-		
-		NVIC_SetPriority(EXTI2_3_IRQn, 0);
+		//Toxic water interrupt on PB3
+		NVIC_SetPriority(EXTI2_3_IRQn, 2);
 	
 }
 
@@ -170,19 +167,20 @@ void HAL_SYSTICK_Callback(void) {
  * Main Program Code
  *
  * Starts initialization of peripherals
- * Blinks green LED (PC9) in loop as heartbeat
+ * Begins main program loop
  * -------------------------------------------------------------------------------------------------------------
  */
 volatile uint32_t encoder_count = 0;
 volatile uint32_t PWM = 0;
 volatile uint32_t PWMcap = 100;
 volatile uint32_t interruptCount = 0;
-volatile uint32_t burn = 0;\
+volatile uint8_t levelflag = 0;
 volatile uint32_t toxicflag = 0;
+volatile uint32_t count= 0;
 
 int main(int argc, char* argv[]) {
 
-    debouncer = 0;                          // Initialize global variables
+    debouncer = 0;                          
 		HAL_Init();															// Initialize HAL
     LED_init();                             // Initialize LED's
     button_init();                          // Initialize button
@@ -196,9 +194,12 @@ int main(int argc, char* argv[]) {
 	
     while (1) {
 			
-			if(toxicflag == 0){
-        GPIOC->ODR ^= GPIO_ODR_9;           // Toggle green LED (heartbeat)
-        encoder_count = TIM2->CNT;
+			//Check for toxic flag interrupt
+			if(toxicflag > 0){
+				transtring(errorstring2);
+				break;
+			}
+			else if(toxicflag == 0){
 			
 				if(flagSet == 1){
 			
@@ -208,33 +209,48 @@ int main(int argc, char* argv[]) {
 			
 				}
 				
-				// PROJECT When board is reset, start filling for 4.5 seconds at 90% duty cycle
-				if(PWM > 0){
-					pwm_setDutyCycle(PWM);
+				pwm_setDutyCycle(PWM);
+				
+				// If low level sensor triggers an interrupt, set the pump to fill container
+				if(levelflag > 0){
+					
+					transtring(one); // Message pump is running
 					GPIOC->BSRR |= (1<<8);
-					HAL_Delay(4000); 
+					
+					//Sets water level and runs pump 
+					while(count < 2000000){
+						
+						pwm_setDutyCycle(PWM);
+				
+						if(toxicflag > 0){
+						transtring(errorstring2);
+						PWM=0;
+						break;
+						}
+						count++;
+					}
+					
 					GPIOC->BSRR |= (1<<24);
+					
+					transtring(done);
+					count = 0;
 					PWM = 0;
+					levelflag = 0;
 				}
 			
-        //                     // Delay 1/8 second
     }
-		else if(toxicflag > 0){
-			transtring(errorstring2);
-			break;
-		}
+		
 		
 	}
 }
 
-//?************************************************************************
-
+//Function to read USART commands
 void Parse(void){
 	
 	if(counter == 0){
 		color = readData;
 		
-		if(!(color == 'a'|| color == 'm' || color == 'g' || color == 'o')){
+		if(!(color == 'a'|| color == 'm')){
 			transtring(errorstring);
 			counter = 0;
 		}
@@ -250,81 +266,40 @@ void Parse(void){
 		
 	}
 	
-	//transtring(testpoint);
+	//Used to set motor rates
 	if(counter == 2){
 		if(color == 'a'){
 			if(mode == '0'){
-				//Turn off LED
-				//GPIOC->BSRR |= (1<<22);
-				PWMcap = 0;
+		
+				PWMcap = 90;
 			}
 			else if(mode == '1'){
-				//Turn on LED
-				//GPIOC->BSRR |= (1<<6);
+				
+				PWMcap = 95;
+			}
+			else if(mode == '2'){
+			
 				PWMcap = 100;
 			}
-			else if(mode == '2'){
-				//Toggle LED
-				PWMcap = 80;
-			}
 			else
 				transtring(errorstring);
 			
 		}
-		else if(color == 'o'){
+		//Used to turn pump on and off manually 
+		else if(color == 'm'){
 			if(mode == '0'){
-				//Turn off LED
-				GPIOC->BSRR |= (1<<24);
+				PWM = 0;
 			}
 			else if(mode == '1'){
-				//Turn on LED
-				GPIOC->BSRR |= (1<<8);
-			}
-			else if(mode == '2'){
-				//Toggle LED
-				HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_8);
+				PWM = PWMcap;
 			}
 			else
 				transtring(errorstring);
 			
 			
-		}
-		else if(color == 'g'){
-			if(mode == '0'){
-				//Turn off LED
-				GPIOC->BSRR |= (1<<25);
-			}
-			else if(mode == '1'){
-				//Turn on LED
-				GPIOC->BSRR |= (1<<9);
-			}
-			else if(mode == '2'){
-				//Toggle LED
-				HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_9);
-			}
-			else
-				transtring(errorstring);
-				
-			
-		}
-		else if(color == 'b'){
-			if(mode == '0'){
-				//Turn off LED
-				GPIOC->BSRR |= (1<<23);
-			}
-			else if(mode == '1'){
-				//Turn on LED
-				GPIOC->BSRR |= (1<<7);
-			}
-			else if(mode == '2'){
-				//Toggle LED
-				HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_7);
-			}
-			else
-				transtring(errorstring);
 		}
 		//Error message if invalid color is entered
-		else if(color != 13 || color != 'r' || color != 'g' || color != 'b' || color != 'o')  {
+		else if(color != 13 || color != 'a' || color != 'm')  {
 			transtring(errorstring);
 		}
 		counter = 0;
@@ -373,17 +348,17 @@ void transtring(char key[])
 		}
 }
 
-//?************************************************************************************
-
 //Handler to interrupt main when the water level drops below a set threshold. 
 void EXTI0_1_IRQHandler(void){
 
 	static int check = 0; // Static variable to keep track of LED state
 	if(interruptCount == 0){
-	 PWM = PWMcap;
+		levelflag = 1;
+	  PWM = PWMcap;
 		GPIOC->BSRR |= (1<<7); // blue LED signals pump is running
+		
 		interruptCount++;
-		burn = 1;
+		
 	}
 	else if(interruptCount == 1){
 		PWM = 0;
@@ -392,21 +367,6 @@ void EXTI0_1_IRQHandler(void){
 	}
 	// Toggle between green and orange LEDs
 		
-		HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_8 | GPIO_PIN_9);
-	
-	//PROJECT
-	//Maybe kick off the water pump and wait until user reset 
-	
-	
-	 //Loop to break HAL delay library. (UNCOMMENT FOR PT2)
-	 //for(int i = 0; i <= 150000; i++){
-		 
-		//		__asm volatile ("nop");
-	 //}
-	 
-	
-	 HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_8 | GPIO_PIN_9);
-		
 		EXTI->PR |= 1;
 }
 
@@ -414,16 +374,15 @@ void EXTI0_1_IRQHandler(void){
 void EXTI2_3_IRQHandler(void){
 
 	
-		//Turn motor off and transmit message
+		//If the pump is not running and toxic water is detected, stop system
+		if(levelflag != 1){
 		pwm_setDutyCycle(0);
-
+		PWM = 0;
 		GPIOC->BSRR |= (1<<6);
 		toxicflag = 1;
 		//Dont exit interrupt, user reset is now required.
-	
+		}
 		EXTI->PR |= 1;
 }
 
 
-
-// ----------------------------------------------------------------------------
