@@ -159,6 +159,19 @@ Pictures from the Milestone 2 experiment day: <br><br>
 <pre> Mini-Project Milestone 4 Final submission : </pre><br>
 - 
 - 
+
+
+
+![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/4thExpPics_final/1.jpg)
+![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/4thExpPics_final/2.jpg)
+![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/4thExpPics_final/3.jpg)
+![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/4thExpPics_final/4.jpg)
+![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/4thExpPics_final/5.jpg)
+![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/4thExpPics_final/6.jpg)
+![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/4thExpPics_final/7.jpg)
+![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/4thExpPics_final/8.jpg)
+![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/4thExpPics_final/9.jpg)
+
 ## Testing
 - The water storage tank should be in a higher level than the water container that water is pumped from. Otherwise, the water transfer will occcur until the both containers' levels are balanced with the help of gravity without the pump.
 
