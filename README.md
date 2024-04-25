@@ -158,6 +158,8 @@ Pictures from the Milestone 2 experiment day: <br><br>
 ![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/3rdExpPics/5.jpg)
 ![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/3rdExpPics/6.jpg)
 ![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/6.UART_USB.jpg)
+![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/5.MotorDriver.jpg)
+
 
 
 
