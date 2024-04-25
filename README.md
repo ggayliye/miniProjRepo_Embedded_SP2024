@@ -206,13 +206,18 @@ Have a wonderful day!
 
 ##Test Set up
 
-- Two water containers are needed one of them to be filled with water and the other one can be just a little over the water level sensor.
-- Both conteners should host a wire that current flows through the water. This will serve measurung the resistance of the water and comparing and sending the signals to the LM324 op-amp Vp and Vn pins.
+- Two water containers are needed one of them to be filled with water and the other with just enough water to cover the level sensor. 
+- The water level sensor is constructed from two copper wires taped to an insulating rod. These wires attatch to the water level comparing circuit which sends a high or low signal to the microcontroller. 
+- In order to measure toxicity, both conteners should host a wire to allow current to flow through the water. This will measure the resistance of the water and compare this to normal by sending the signals to the LM324 op-amp Vp and Vn pins.
 - This op-amp output should go to an NMOS transoistor gate. The NMOS transistor drain receives a square wave with a sweep in 10 Hz to 1.5 kHz. The sweep time should be set to 900ms. The amplitude should be set to 4 Vpp. On the source of the NMOS, a speaker is connected. The speaker's other end is connected to Ground. 
 - The op-amp receives 5V in DC on the +Vdd and 0V/Ground on the -Vdd.
-- 
-- On the water pump operation, the pump is connected to 4V DC from power supply.
-
+- When the water contains enough salt to be determined unsafe, the comparator triggers the rest of the toxicity circuit to sound the alarm and illuminate the LED. This toxicity circuit also sends a high or low signal to the microcontroller. 
+- The low level circuit output signal is connected to pin PA0 of the STM32, and the toxic water circuit output signal is connected to PB3 of the STM32. These signals trigger interrupts within the microcontrollers software which allow for enabling and disabling the pump. 
+- The water pump is connected to the motor driver. We are driving the motor at 4V so we supply the motor diver with a constant 4V DC supply. 
+- For full USART capability, PUTTY or any other UART terminal is required. 
+- To test the system, water can be drained from the water tank. Draining the tank below the set threshold will automatically trigger the motor to turn on and begin refilling the container. When the pump kicks on, a message will be transmitted over UART signaling the pump is running. The pump will then pump for a preset time until the water tank is full, once again signaling over UART that the tank is full.
+- In the case a user wishes to change the pump rate, or manually enable/disable the pump, these commands can be sent over UART. Pressing M followed by 1 in the terminal will turn the pump on, M - 0 will turn the pump off. To select various pump speeds, the commands A - 0, A - 1, and A - 2 can be used. 0 commands 100% PWM, 1 commands 95% and 2 commands 90%. 
+- To test the water toxicity circuit, salt can be added to a full water tank. Once enough salt is added to this tank the alarm will sound and a message will be transmitted over UART signaling an operater to manually reset the system. All functions of the system will be disabled at this time. 
 
 
 Obtaining the components, this project can also be tested in another settings. We don't recommend to test this project to anyone who doesn't have full/complete information about this project.
