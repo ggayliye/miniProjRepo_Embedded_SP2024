@@ -139,6 +139,7 @@ Pictures from the Milestone 2 experiment day: <br><br>
 ![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/2ndExpPics/2.jpg)
 ![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/2ndExpPics/3.jpg)
 ![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/4.SensorPrototype_WaterLevel.jpg)
+![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/emptySensor/Schematic%20Photo.JPG)
 
 
 <ins>5th Week Notes:</ins> <br>
