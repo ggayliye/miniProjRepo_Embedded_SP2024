@@ -8,9 +8,9 @@ project/stm32f0xx_hal_dma.o: \
   ..\Drivers\CMSIS\Device\ST\STM32F0xx\Include\stm32f072xb.h \
   ..\Drivers\CMSIS\Include\core_cm0.h \
   C:\Keil_v5\ARM\ARMCLANG\include\stdint.h \
-  D:\School\Semester\ 6\ECE\ 5780\Project\Drivers\CMSIS\Include\cmsis_version.h \
-  D:\School\Semester\ 6\ECE\ 5780\Project\Drivers\CMSIS\Include\cmsis_compiler.h \
-  D:\School\Semester\ 6\ECE\ 5780\Project\Drivers\CMSIS\Include\cmsis_armclang.h \
+  D:\School\Semester\ 6\ECE\ 5780\miniProjRepo_Embedded_SP2024\emptySensor\Project\Drivers\CMSIS\Include\cmsis_version.h \
+  D:\School\Semester\ 6\ECE\ 5780\miniProjRepo_Embedded_SP2024\emptySensor\Project\Drivers\CMSIS\Include\cmsis_compiler.h \
+  D:\School\Semester\ 6\ECE\ 5780\miniProjRepo_Embedded_SP2024\emptySensor\Project\Drivers\CMSIS\Include\cmsis_armclang.h \
   C:\Keil_v5\ARM\ARMCLANG\include\arm_compat.h \
   C:\Keil_v5\ARM\ARMCLANG\include\arm_acle.h \
   ..\Drivers\CMSIS\Device\ST\STM32F0xx\Include\system_stm32f0xx.h \

@@ -195,6 +195,8 @@ int main(int argc, char* argv[]) {
     while (1) {
 			
 			//Check for toxic flag interrupt
+			GPIOC->BSRR |= (1<<9);
+			
 			if(toxicflag > 0){
 				transtring(errorstring2);
 				break;
@@ -376,11 +378,11 @@ void EXTI2_3_IRQHandler(void){
 	
 		//If the pump is not running and toxic water is detected, stop system
 		if(levelflag != 1){
-		pwm_setDutyCycle(0);
-		PWM = 0;
-		GPIOC->BSRR |= (1<<6);
-		toxicflag = 1;
-		//Dont exit interrupt, user reset is now required.
+			pwm_setDutyCycle(0);
+			PWM = 0;
+			GPIOC->BSRR |= (1<<6);
+			toxicflag = 1;
+			//Dont exit interrupt, user reset is now required.
 		}
 		EXTI->PR |= 1;
 }
