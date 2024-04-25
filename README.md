@@ -63,7 +63,7 @@ This project is worked on as a requirement of the "ECE 6780 Embedded System Desi
 By March 13th
 
 - The project proposal is submitted.
-- Feedback about our project proposal is received from the TA. It reads as following:<br>
+- Feedback about our project proposal is received from the TA. It reads as follows:<br>
 
 *"Good that you are considering safety. Think about how you can test the system without a tank and pump.* <br>
 
@@ -90,13 +90,13 @@ By March 29th:
 
  <pre>Mini-Project Milestone 1 :  </pre>
 
-This week on Thursday, we met with Ashton in the office hours and discussed about our project's status.<br>
+This week on Thursday, we met with Ashton during office hours and discussed our project's status.<br>
 
-We talked about the implementation of the microcontroller, motor's pumping speed, and water level sensors. As we mentioned in our project proposal, we're expecting the water level sensor to be the difficult part of the project.<br>
+We talked about the implementation of the microcontroller, the motor's pumping speed, and water level sensors. As we mentioned in our project proposal, we're expecting the water level sensor to be the difficult part of the project.<br>
 
-We updated the TA what we have done and talked about our team meeting in the week. We determined the tasks we planned to do this week's experiment. <br>
+We updated the TA on what we have done and talked about our team meeting in the week. We determined the tasks we planned to do in this week's experiment. <br>
 
-Today on Friday, we met with the team to test our motor, microcontroller and measure the speed of the pump. <br>
+Today on Friday, we met with the team to test our motor, microcontroller, and measure the speed of the pump. <br>
 
 In our group meeting today, we measured the speed of the pump. We found the running current of the motor to be 170 mA. The other experiment results with the water pump are below:
 
@@ -112,7 +112,7 @@ In our group meeting today, we measured the speed of the pump. We found the runn
  
 Avg: 5.505 sec for 100ml.<br>
 
-- We will be testing the comepleted section of the peoject each week. Before the final week, we'll be testing the project with all components together. In the final week, we'll also demonstrate the project's function as a whole.
+- We will be testing the completed section of the project each week. Before the final week, we'll be testing the project with all components together. In the final week, we'll also demonstrate the project's function as a whole.
 
 Pictures from the experiment day: <br><br>
 ![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/1stExpPics/1.jpg)
@@ -126,13 +126,13 @@ By April 5th:
 
 - This week on Friday, we met with TA Baily in the morning lab hours and discussed our project's status.
 
-- We talked about the implementation of the microcontroller and a water level sensor prototype.  We tested an LM324 comparator and metal probs to sense the water level. We successfully were able to trigger the interrupt that signals when the water storage tank is empty (water level). 
+- We talked about the implementation of the microcontroller and a water-level sensor prototype.  We tested an LM324 comparator and metal probes to sense the water level. We successfully were able to trigger the interrupt that signals when the water storage tank is empty (water level). 
 
 - After the lab, we met to do the sensor-level testing and the comparator implementation.  Also, we were able to send the interrupt signal to the microcontroller to be able to read the signal and respond as an interrupt. The L292, from our soldering PCB assignment, is used to run the motor and change the motor speed adjusting PWM.
 
-- Water pump motor is driven at 4V allows modulation (PWM) between 80% and 100%.
+- The water pump motor is driven at 4V allowing modulation (PWM) between 80% and 100%.
 
-- We forsee our working motor speed may change when we progress on this project.
+- We foresee our working motor speed may change when we progress on this project.
 
 Pictures from the Milestone 2 experiment day: <br><br>
 ![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/2ndExpPics/1.jpg)
@@ -144,11 +144,11 @@ Pictures from the Milestone 2 experiment day: <br><br>
 <ins>5th Week Notes:</ins> <br>
 <pre> Mini-Project Milestone 3 : </pre><br>
 
-- On Friday during our lab time on 12th of April, we gathered with all team members to progress our project one step further. In our meeting, we implemented the sensor signal-microcontroller interface and UART-microcontroller interface.
+- On Friday during our lab time on the 12th of April, we gathered with all team members to progress our project one step further. In our meeting, we implemented the sensor signal-microcontroller interface and UART-microcontroller interface.
 
 - At the beginning of the project, we had predicted the most challenging part would have been implementing the water level sensor. This sensor implementation was expected to be challenging because it should sense the empty status of the water container. However, it's good news that we were able to successfully implement it during our lab meeting this week.
 
-- To give a little bit of background information on how the empty tank sensing should work is that we implemented the physical sensor on the bottom of the water tank wired with a microcontroller connection. When the water level reaches low, the sensor sends an analog signal to an op-amp that works as a comparator. It compares the Vp and Vn input pins and outputs Vcc in the Vout that is connected to the microcontroller. When the analog signal is received from the op-amp, which will be signaling that the container is empty, the microcontroller will turn the water pump on, and the pump starts refilling the water container. The microcontroller will interrupt in the end when the container is full and that will indicate the time to stop pumping water .
+- To give a little bit of background information on how the empty tank sensing should work is that we implemented the physical sensor on the bottom of the water tank wired with a microcontroller connection. When the water level reaches low, the sensor sends an analog signal to an op-amp that works as a comparator. It compares the Vp and Vn input pins and outputs Vcc in the Vout that is connected to the microcontroller. When the analog signal is received from the op-amp, which will signal that the container is empty, the microcontroller will turn the water pump on, and the pump starts refilling the water container. The microcontroller will interrupt in the end when the container is full and that will indicate the time to stop pumping water.
 
 ![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/3rdExpPics/1.jpg)
 ![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/3rdExpPics/2.jpg)
@@ -202,27 +202,25 @@ Have a wonderful day!
 # Testing
 
 
-- The water storage tank should be in a higher level than the water container that water is pumped from. Otherwise, the water transfer will occcur until the both containers' levels are balanced with the help of gravity without the pump.
+- The water storage tank should be at a higher level than the water container that water is pumped from. Otherwise, the water transfer will occur until both containers' levels are balanced with the help of gravity without the pump.
 
-##Test Set up
+## Project Testing Set Up
 
-- Two water containers are needed one of them to be filled with water and the other with just enough water to cover the level sensor. 
-- The water level sensor is constructed from two copper wires taped to an insulating rod. These wires attatch to the water level comparing circuit which sends a high or low signal to the microcontroller. 
-- In order to measure toxicity, both conteners should host a wire to allow current to flow through the water. This will measure the resistance of the water and compare this to normal by sending the signals to the LM324 op-amp Vp and Vn pins.
-- This op-amp output should go to an NMOS transoistor gate. The NMOS transistor drain receives a square wave with a sweep in 10 Hz to 1.5 kHz. The sweep time should be set to 900ms. The amplitude should be set to 4 Vpp. On the source of the NMOS, a speaker is connected. The speaker's other end is connected to Ground. 
+- Two water containers are needed: one of them to be filled with water and the other with just enough water to cover the level sensor. 
+- The water level sensor is constructed from two copper wires taped to an insulating rod. These wires attach to the water level comparing circuit which sends a high or low signal to the microcontroller. 
+- To measure toxicity, both containers should host a wire to allow current to flow through the water. This will measure the resistance of the water, ensure equal residency in case pH (potentially may change between 0-14) changes, and compare the "standard" water sample to the "tested" container by sending the signals to the LM324 op-amp's Vp and Vn pins. Depending on the safety, the op-amp will have 2 distinct outputs that help trigger the safety alarm if NaCl is detected.
+- This op-amp's output should go to an NMOS transistor gate. The NMOS transistor's drain receives a square wave with a sweep from 10 Hz to 1.5 kHz. The sweep time should be set to 900ms. The amplitude should be set to 4 Vpp. On the source of the NMOS, a speaker is connected. The speaker's other end is connected to the Ground. 
 - The op-amp receives 5V in DC on the +Vdd and 0V/Ground on the -Vdd.
 - When the water contains enough salt to be determined unsafe, the comparator triggers the rest of the toxicity circuit to sound the alarm and illuminate the LED. This toxicity circuit also sends a high or low signal to the microcontroller. 
-- The low level circuit output signal is connected to pin PA0 of the STM32, and the toxic water circuit output signal is connected to PB3 of the STM32. These signals trigger interrupts within the microcontrollers software which allow for enabling and disabling the pump. 
+- The low-level circuit output signal is connected to pin PA0 of the STM32, and the toxic water circuit output signal is connected to PB3 of the STM32. These signals trigger interrupts within the microcontrollers software which allow for enabling and disabling the pump. 
 - The water pump is connected to the motor driver. We are driving the motor at 4V so we supply the motor diver with a constant 4V DC supply. 
 - For full USART capability, PUTTY or any other UART terminal is required. 
 - To test the system, water can be drained from the water tank. Draining the tank below the set threshold will automatically trigger the motor to turn on and begin refilling the container. When the pump kicks on, a message will be transmitted over UART signaling the pump is running. The pump will then pump for a preset time until the water tank is full, once again signaling over UART that the tank is full.
-- In the case a user wishes to change the pump rate, or manually enable/disable the pump, these commands can be sent over UART. Pressing M followed by 1 in the terminal will turn the pump on, M - 0 will turn the pump off. To select various pump speeds, the commands A - 0, A - 1, and A - 2 can be used. 0 commands 100% PWM, 1 commands 95% and 2 commands 90%. 
-- To test the water toxicity circuit, salt can be added to a full water tank. Once enough salt is added to this tank the alarm will sound and a message will be transmitted over UART signaling an operater to manually reset the system. All functions of the system will be disabled at this time. 
+- In the case a user wishes to change the pump rate, or manually enable/disable the pump, these commands can be sent over UART. Pressing M followed by 1 in the terminal will turn the pump on, and M - 0 will turn the pump off. To select various pump speeds, the commands A - 0, A - 1, and A - 2 can be used. 0 commands 100% PWM, the "1" commands 95%, and "2" commands 90%. 
+- To test the water toxicity circuit, salt can be added to a full water tank. Once enough salt is added to this tank the alarm will sound and a message will be transmitted over UART signaling an operator to manually reset the system. All functions of the system will be disabled at this time. 
 
 
-Obtaining the components, this project can also be tested in another settings. We don't recommend to test this project to anyone who doesn't have full/complete information about this project.
-
-
+*Obtaining the components, this project can also be tested in a different setting. However, we don't recommend testing this project to anyone who doesn't have full/complete information about this project.*
 
 
 # Credits
@@ -238,7 +236,8 @@ Obtaining the components, this project can also be tested in another settings. W
 * Don't use any electric component that exceeds 5V.
 * Don't use any metal with a wet hand and touch an electric component.
 * Wash your hands after each experiment.
-* Don't drink the water you used for the testing/experiment.
+* Don't drink the water used for the testing/experiment.
+* Make sure you check and be familiar with the op-amp and transistor's type and physics before starting the experiment.
 
 
 # Examples of Good Software Practice (GSP)
