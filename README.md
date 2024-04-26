@@ -194,8 +194,8 @@ Pictures from the Milestone 2 experiment day: <br><br>
 
 
 ## Video Presentation of The Completed Project: 
+[![Watch the video] (https://youtu.be/beLorS1tq-g?si=2JD5UkME6I-1wD0t)
 
-![alt text](https://youtu.be/beLorS1tq-g?si=2JD5UkME6I-1wD0t)
 
 # Time Expenditures:
 <pre>Predicted Hours: 15h		Actual Hours:	16h		 </pre>
