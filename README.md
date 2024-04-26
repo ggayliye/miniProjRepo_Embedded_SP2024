@@ -25,9 +25,13 @@ Copyright: ECE 6780, Kyle G. Gayliyev  - This work may not be copied for use in 
 
 ![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/7.PartsList.jpg)
 
-## Functional block diagram of The Project: 
+## Functional Block Diagram of The Project: 
 
 ![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/1.schematic.jpg)
+
+## Schematic of The Project: 
+
+![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/8.Final_project_schematic.jpg)
 
 ## A List of 4 Implementation Milestones:
 
@@ -164,8 +168,6 @@ Pictures from the Milestone 2 experiment day: <br><br>
 ![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/5.MotorDriver.jpg)
 
 
-
-
 <ins>6th Week Notes:</ins> <br>
 <pre> Mini-Project Milestone 4 Final submission : </pre><br>
 - Today, on April 24th, we meet up to complete our project in the lab. We successfully implemented toxicity detection, as well as water level detection with UART messages displayed in the terminal.
@@ -179,7 +181,6 @@ Pictures from the Milestone 2 experiment day: <br><br>
 - Additionally, our system allows for manual control of the pump over UART. A user can turn the pump on and off, as well as change between three preset pump rates. The microcontroller will automatically send messages to the terminal when the tank is empty, or full, or if the water has gone toxic. 
 - Overall, we completed all milestones and tasks for this mini-project that were initially set.
 
-
 ![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/4thExpPics_final/1.jpg)
 ![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/4thExpPics_final/2.jpg)
 ![alt text](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/4thExpPics_final/3.jpg)
@@ -192,7 +193,9 @@ Pictures from the Milestone 2 experiment day: <br><br>
 
 
 
+## Video Presentation of The Completed Project: 
 
+![alt text](https://youtu.be/beLorS1tq-g?si=2JD5UkME6I-1wD0t)
 
 # Time Expenditures:
 <pre>Predicted Hours: 15h		Actual Hours:	16h		 </pre>
