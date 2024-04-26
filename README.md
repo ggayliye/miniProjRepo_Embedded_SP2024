@@ -20,6 +20,7 @@ Copyright: ECE 6780, Kyle G. Gayliyev  - This work may not be copied for use in 
 * This project has applications in drinking water storage tanks, petroleum refineries, and more. 
 * Our design will be very safe to use as we take all precautions and safety measurements before the launch.
 * In this project, we implemented interrupt, GPIO, UART, and motor drive.
+* For the software, we used C programming language and coded using Keil uVision5.
 
 ## List of Materials : 
 
