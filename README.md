@@ -68,21 +68,7 @@ This project is worked on as a requirement of the "ECE 6780 Embedded System Desi
 By March 13th
 
 - The project proposal is submitted.
-- Feedback about our project proposal is received from the TA. It reads as follows:<br>
-
-*"Good that you are considering safety. Think about how you can test the system without a tank and pump.* <br>
-
-*Float sensors are another possibility you can consider for measuring the height.* <br>
-
-*Be careful of relying on a "known" rate, such as the pump time. Variations can make the integration of the rate become increasingly wrong over time as the error accumulates. Use the expected rate to do initial conditions and then use sensor feedback to adjust.* <br>
-
-*You need to expand the detail of your milestones. You use verbs for activities, which is good. Some of your targets are less clear - be as detailed as possible about how you will demonstrate it working and what a successful implementation would be. What does "working" mean? How do you demo that?* <br>
-
-*Your first milestone falls into the "getting materials" anti-milestone. You cannot test something you don't have, and you need to make progress towards other goals.* <br>
-
-*Your risks are identified, but think about what you can do it the risk turns out to be true. If the water sensor is the challenge, do you have a fallback? What happens if you run over schedule?* <br>
-
-*Finally, make sure you don't fall in the trap of splitting the work up by person and then trying to bring everything together. This is a classic mistake everyone always tries."*
+- Feedback is received from the TA about our project proposal.<br>
 
 <ins>2nd Week Notes:</ins> <br>
 By March 22nd:
