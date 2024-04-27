@@ -194,10 +194,6 @@ Pictures from the Milestone 2 experiment day: <br><br>
 
 
 
-## Video Presentation of The Completed Project: 
-[![Final Project Demonstration](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/9.Final%20Project%20Demonstration%20-%20Embedded%20Systems.jpg)](https://youtu.be/9Yy0rnygG_Y)
-
-
 # Time Expenditures:
 <pre>Predicted Hours: 15h		Actual Hours:	16h		 </pre>
 
@@ -231,6 +227,9 @@ Have a wonderful day!
 
 
 *Obtaining the components, this project can also be tested in a different setting. However, we don't recommend testing this project to anyone who doesn't have full/complete information about this project.*
+
+## Video Presentation of The Completed Project: 
+[![Final Project Demonstration](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/9.Final%20Project%20Demonstration%20-%20Embedded%20Systems.jpg)](https://youtu.be/beLorS1tq-g)
 
 
 # Credits
