@@ -241,7 +241,7 @@ Have a wonderful day!
 #### 4.Behind the scenes:
 [![4.Behind the scenes](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/Behind%20the%20scenes-videoPics/13.Behind%20the%20scenes-4.jpg)](https://youtu.be/cTMJ8XVg88U)
 #### 5.Behind the scenes:
-[![5.Behind the scenes](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/Behind%20the%20scenes-videoPics/14.Behind%20the%20scenes-5.jpg.jpg)](https://youtu.be/9Yy0rnygG_Y)
+[![5.Behind the scenes](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/Behind%20the%20scenes-videoPics/14.Behind%20the%20scenes-5.jpg)](https://youtu.be/9Yy0rnygG_Y)
 
 #### Water Safity Testing:
 [![Water Safity Testing](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/Behind%20the%20scenes-videoPics/Water%20Safety%20Testing.jpg)](https://youtu.be/uQ_QnTD59tI)
