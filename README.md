@@ -195,7 +195,7 @@ Pictures from the Milestone 2 experiment day: <br><br>
 
 
 ## Video Presentation of The Completed Project: 
-[![Watch the video] (https://youtu.be/beLorS1tq-g?si=2JD5UkME6I-1wD0t)
+[![Final Project Demonstration](https://github.com/ggayliye/miniProjRepo_Embedded_SP2024/blob/main/materials/9.Final%20Project%20Demonstration%20-%20Embedded%20Systems.jpg)](https://youtu.be/9Yy0rnygG_Y)
 
 
 # Time Expenditures:
