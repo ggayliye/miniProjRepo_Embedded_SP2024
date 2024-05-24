@@ -1,6 +1,6 @@
-# Final-Project: Water Storage Tank Refill And Safety Control
+# Project: Water Storage Tank Refill And Safety Control
 
-Authors : Kyle G. Gayliyev, Hazen R. Brown, Prasanna Umbarkar, Mihir Rane <br>
+Authors: Kyle G. Gayliyev, Hazen R. Brown, Prasanna Umbarkar, Mihir Rane <br>
 Date: 29- March - 2024<br>
 Course: ECE 6780 - Embedded System Design, ECE Department, The University of Utah<br>
 GitHub IDs: ggayliye, Hrb2003, prasannaumbarkar09, patientcoderMR7 <br>
